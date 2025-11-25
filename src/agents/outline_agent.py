@@ -41,10 +41,12 @@ Output format:
 }
 """
 
-    def create_outline(self, topic, audience="General", tone="Professional", context="", slide_count=None):
+    def create_outline(self, topic, audience="General", tone="Professional", context="", slide_count=None, instructions=""):
         prompt = f"{self.metaprompt}\n\nTOPIC: {topic}\nTARGET AUDIENCE: {audience}\nTONE: {tone}\nCONTEXT: {context}"
         if slide_count:
             prompt += f"\nSLIDE COUNT: {slide_count}"
+        if instructions:
+            prompt += f"\nCUSTOM INSTRUCTIONS: {instructions}"
             
         response = self.generate(prompt)
         if response:

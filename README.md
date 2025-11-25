@@ -8,20 +8,6 @@ An AI-powered system that creates professional PowerPoint presentations from a s
 
 ---
 
-## 🚀 Features
-
-* **🧩 Outline Agent** – Generates a structured, logical slide outline based on the user's topic and audience.
-* **✏️ Content Agent** – Expands each outline point into detailed, professional slide content.
-* **🔍 Critic Agent** – Reviews the content for flow, clarity, and tone, ensuring high quality.
-* **📊 PPTX Generator** – compiles the finalized content into a formatted PowerPoint file.
-* **🖼️ (Optional) Image Agent** – Can be configured to suggest or generate image prompts for slides.
-
----
-
-## ⚙️ How It Works
-
-The application follows a linear agentic workflow:
-
 1.  **User Input:** You provide a topic (and optional context).
 2.  **Planning:** The *Outline Agent* drafts the deck structure.
 3.  **Drafting:** The *Content Agent* writes the text for each slide.
@@ -80,11 +66,15 @@ python main.py --topic "The Future of AI in Healthcare"
 
 ### Advanced Usage
 ```bash
-python main.py --topic "Sustainable Energy Solutions" --output "energy_presentation.pptx"
+python main.py --topic "Remote Work Culture" --slides 4 --instructions "Include a slide specifically about 'Zoom Fatigue' and use a humorous tone."
 
 ### Optional Arguments
 --topic: (Required) The subject matter of the presentation.
-
+--audience: (Optional) The target audience (default: General).
+--tone: (Optional) The desired tone (default: Professional).
+--slides: (Optional) Number of slides (default: 8).
+--instructions: (Optional) Custom instructions for the Content Agent.
+--images: (Optional) Generate images for the slides.
 --output: (Optional) Filename for the saved PPTX (defaults to presentation.pptx).
 
 ### Project Structure

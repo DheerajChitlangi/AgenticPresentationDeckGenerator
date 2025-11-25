@@ -15,6 +15,7 @@ def main():
     parser.add_argument("--context_file", type=str, help="Path to a text file with additional context")
     parser.add_argument("--slides", type=int, help="Desired number of slides")
     parser.add_argument("--images", action="store_true", help="Generate images for slides")
+    parser.add_argument("--instructions", type=str, help="Custom instructions for the agents")
     args = parser.parse_args()
 
     context = ""
@@ -28,11 +29,13 @@ def main():
 
     print(f"Starting generation for topic: {args.topic}")
     print(f"Audience: {args.audience}, Tone: {args.tone}")
+    if args.instructions:
+        print(f"Custom Instructions: {args.instructions}")
 
     # 1. Outline Agent
     print("\n--- Step 1: Generating Outline ---")
     outline_agent = OutlineAgent()
-    outline = outline_agent.create_outline(args.topic, args.audience, args.tone, context, args.slides)
+    outline = outline_agent.create_outline(args.topic, args.audience, args.tone, context, args.slides, args.instructions)
     if not outline:
         print("Failed to generate outline.")
         return
@@ -41,7 +44,7 @@ def main():
     # 2. Content Agent
     print("\n--- Step 2: Generating Content ---")
     content_agent = ContentAgent()
-    content = content_agent.generate_content(outline, args.audience, args.tone, context)
+    content = content_agent.generate_content(outline, args.audience, args.tone, context, args.instructions)
     if not content:
         print("Failed to generate content.")
         return
@@ -50,7 +53,7 @@ def main():
     # 3. Critic Agent
     print("\n--- Step 3: Reviewing and Refining ---")
     critic_agent = CriticAgent()
-    refined_content = critic_agent.critique_presentation(content, args.audience, args.tone, context)
+    refined_content = critic_agent.critique_presentation(content, args.audience, args.tone, context, args.instructions)
     if not refined_content:
         print("Failed to refine content. Using original content.")
         refined_content = content

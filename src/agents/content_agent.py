@@ -40,8 +40,10 @@ Output format:
 }
 """
 
-    def generate_content(self, outline, audience="General", tone="Professional", context=""):
+    def generate_content(self, outline, audience="General", tone="Professional", context="", instructions=""):
         prompt = f"{self.metaprompt}\n\nOUTLINE: {json.dumps(outline, indent=2)}\nTARGET AUDIENCE: {audience}\nTONE: {tone}\nCONTEXT: {context}"
+        if instructions:
+            prompt += f"\nCUSTOM INSTRUCTIONS: {instructions}"
         response = self.generate(prompt)
         if response:
             try:
