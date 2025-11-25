@@ -15,20 +15,6 @@ An AI-powered system that creates professional PowerPoint presentations from a s
 5.  **Assembly:** The *PPTX Generator* builds the final `.pptx` file.
 
 ---
-
-## 🛠️ Prerequisites
-
-Before you begin, ensure you have the following:
-
-* **Python 3.8+** installed.
-* A **Google Cloud Project** with the [Gemini API enabled](https://ai.google.dev/).
-* A valid **Google Gemini API Key**.
-
----
-
-## 📦 Installation
-
-1.  **Clone the repository**
     ```bash
     git clone [https://github.com/yourusername/agentic-presentation-generator.git](https://github.com/yourusername/agentic-presentation-generator.git)
     cd agentic-presentation-generator

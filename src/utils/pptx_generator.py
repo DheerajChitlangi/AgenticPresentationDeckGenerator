@@ -72,20 +72,6 @@ class PPTXGenerator:
                 p.level = 0
                 p.font.size = Pt(18)
 
-            # Add Image if present
-            if "image_path" in slide_data and slide_data["image_path"]:
-                try:
-                    # Resize text frame to make room for image
-                    body_shape.width = Inches(5.0)
-                    
-                    # Add image to the right side
-                    left = Inches(5.5)
-                    top = Inches(1.8) # Align with content top
-                    height = Inches(4.5)
-                    slide.shapes.add_picture(slide_data["image_path"], left, top, height=height)
-                except Exception as e:
-                    print(f"Error adding image to slide: {e}")
-
             # Add speaker notes
             if "speaker_notes" in slide_data:
                 notes_slide = slide.notes_slide
