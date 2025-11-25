@@ -40,18 +40,30 @@ python main.py --topic "Your Presentation Topic" --output "filename.pptx"
 
 ### Arguments
 
-- `--topic`: (Required) The topic or brief description of the presentation you want to generate.
-- `--output`: (Optional) The filename for the generated PowerPoint file. Defaults to `presentation.pptx`.
+- `--topic`: (Required) The topic or brief description of the presentation.
+- `--output`: (Optional) Output filename. Defaults to `presentation.pptx`.
+- `--audience`: (Optional) Target audience (e.g., "Executives", "Students"). Defaults to "General".
+- `--tone`: (Optional) Presentation tone (e.g., "Professional", "Inspiring"). Defaults to "Professional".
+- `--slides`: (Optional) Desired number of slides.
+- `--context_file`: (Optional) Path to a text file containing additional context.
+- `--images`: (Optional) Enable AI image generation for slides.
 
-### Example
+### Examples
 
+**Basic:**
 ```bash
-python main.py --topic "The Future of Artificial Intelligence in Healthcare" --output "ai_healthcare.pptx"
+python main.py --topic "The Future of AI"
+```
+
+**Enterprise:**
+```bash
+python main.py --topic "Cybersecurity Strategy" --audience "Board of Directors" --tone "Urgent and Strategic" --slides 5 --images
 ```
 
 ## Project Structure
 
-- `main.py`: Entry point of the application.
-- `src/agents/`: Contains the AI agent implementations (Outline, Content, Critic).
-- `src/utils/`: Contains utility scripts like the PPTX generator.
-- `requirements.txt`: List of Python dependencies.
+- `main.py`: Entry point.
+- `src/agents/`: AI agents (Outline, Content, Critic, Image).
+- `src/utils/`: Utilities (PPTX Generator).
+- `requirements.txt`: Dependencies.
+
